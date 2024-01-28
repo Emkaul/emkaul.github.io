@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DigitalMediaPlus USSD Panel | Pricing</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DigitalMediaPlus USSD">
+    <meta name="keywords" content="USSD">
+    <meta name="author" content="DigitalMediaPlus">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+
+  <!-- Body -->
+  <body>
+    
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+      <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/img/logo.svg" width="47" alt="USSD Panel">
+            USSD Panel
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                      </div>
+                    </div>
+                  </div>
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="pricing.html" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signin.html" class="nav-link">Sign In</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signup.html" class="nav-link">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a href="contacts-v2.html" class="nav-link">Contact Us</a>
+                </li>
+              </ul>
+            </div>   
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </header>
+
+        <!-- Pagination (bullets) -->
+        <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+      </div>
+    </div>
+  </section>
+
+      
+      <!-- Hero -->
+      <section class="bg-dark dark-mode py-4">
+        <div class="container pb-2 py-lg-3">
+
+          <!-- Breadcrumb -->
+          <nav class="pb-4 mb-lg-3" aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-center justify-content-lg-start mb-0">
+              <li class="breadcrumb-item">
+                <a href="index.html"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Pricing</li>
+            </ol>
+          </nav>
+          <h1 class="text-center mb-0">Transparent Pricing for You</h1>
+        </div>
+        <div style="height: 300px;"></div>
+      </section>
+
+
+    <!-- Pricing plans -->
+    <section class="container position-relative zindex-2" style="margin-top: -300px;">
+      <div class="price-switch-wrapper">
+        <div class="dark-mode pb-2 pb-lg-3">
+        </div>
+        <div class="table-responsive-lg">
+          <div class="d-flex align-items-center pb-4">
+
+            <!-- Pricing plan -->
+            <div class="border rounded-3 rounded-end-0 shadow-sm me-n1" style="width: 32%; min-width: 16rem;">
+              <div class="card bg-light h-100 border-0 border-end rounded-end-0 py-3 py-sm-4 py-lg-5">
+                <div class="card-body text-center">
+                  <h3 class="mb-2">Monthly Maintenance</h3>
+                  <div class="fs-lg pb-4 mb-3">All Networks</div>
+                  <div class="display-5 text-dark mb-1" data-monthly-price>₦25,000</div>
+                </div>
+                <div class="card-footer border-0 text-center pt-0 pb-4">
+                  <a href="pricing.html" class="btn btn-outline-primary btn-lg">Learn more</a>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Featurd pricing plan -->
+            <div class="bg-primary position-relative rounded-3 shadow-primary shadow-dark-mode-none zindex-2 p-4" style="width: 36%; min-width: 18rem;">
+              <div class="card bg-transparent border-light py-3 py-sm-4 py-lg-5">
+                <div class="card-body text-light text-center">
+                  <h3 class="text-light mb-2">Set Up Cost</h3>
+                  <div class="fs-lg opacity-70 pb-4 mb-3">For everyone</div>
+                  <div class="display-5 mb-1" data-monthly-price>FREE</div>
+                </div>
+                <div class="card-footer border-0 text-center pt-0 pb-4">
+                  <a href="account-signup.html" class="btn btn-light btn-lg shadow-secondary">Get started now</a>
+                </div>
+              </div>
+            </div>
+
+
+              <!-- Pricing plan -->
+              <div class="border rounded-3 rounded-end-0 shadow-sm me-n1" style="width: 32%; min-width: 16rem;">
+                <div class="card bg-light h-100 border-0 border-end rounded-end-0 py-3 py-sm-4 py-lg-5">
+                  <div class="card-body text-center">
+                    <h3 class="mb-2">Monthly Maintenance</h3>
+                    <div class="fs-lg pb-4 mb-3">All Networks</div>
+                    <div class="display-5 text-dark mb-1" data-monthly-price>₦25,000</div>
+                  </div>
+                  <div class="card-footer border-0 text-center pt-0 pb-4">
+                    <a href="pricing.html" class="btn btn-outline-primary btn-lg">Learn more</a>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      
+
+
+      <!-- Post content + Sharing -->
+      <section class="container-fluid d-flex justify-content-center mb-5 pt-4 pb-2 py-mg-4">
+        <div class="row gy-4 mx-auto">
+
+          <!-- Content -->
+          <div class="col-lg-9 mx-auto">
+            <h1 class="text-center">Shared USSD Code Pricing and Information</h1>
+
+<p>Expand your reach and connect with customers on their mobile devices with our Shared USSD Code service. Here's everything you need to know about pricing and how it works:</p>
+
+<h2>Costs</h2>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Cost</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Set Up Cost</td>
+      <td>FREE</td>
+    </tr>
+    <tr>
+      <td>Monthly Maintenance</td>
+      <td>NGN 25,000 + 7.5% VAT (Minimum of 3 months required)</td>
+    </tr>
+    <tr>
+      <td>Session Costs (per 20 seconds)</td>
+      <td>NGN 8.50</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Note:</strong> A minimum deposit of NGN 50,000 for session costs is required before your account is activated.</p>
+
+<h2 class="text-center">Billing Systems</h2>
+
+<h3>MTN</h3>
+
+<p>Billing system: Post Paid (Owner of the code pays for session costs)</p>
+<p>Compulsory deposit for session costs: NGN 50,000</p>
+<p>Charges (per 20 seconds): NGN 8.50</p>
+
+<h3>Other Networks (GLO, AIRTEL, 9MOBILE)</h3>
+
+<p>Billing system: Pre Paid (End user pays for session costs)</p>
+<p>Telco deducts session costs directly from end user's airtime.</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Telco</th>
+      <th>Telco Charge to End User (per session)</th>
+      <th>Session Charge (per session)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Airtel</td>
+      <td>NGN 5</td>
+      <td>NGN 4</td>
+    </tr>
+    <tr>
+      <td>Glo</td>
+      <td>NGN 10 (per 120 seconds)</td>
+      <td>NGN 4</td>
+    </tr>
+    <tr>
+      <td>9 Mobile</td>
+      <td>NGN 5</td>
+      <td>NGN 4</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="text-center">Ready to Get Started?</h2>
+
+<p class="text-center">Sign up today to activate your Shared USSD Code and start engaging your customers seamlessly!</p>
+
+<div class="d-flex justify-content-center">
+  <a href="account-signup.html" class="btn btn-primary">Sign Up</a>
+</div>
+
+
+      </section>
+
+
+           <!-- FAQ -->
+           <section class="bg-secondary py-5">
+            <div class="container my-2 py-md-2 py-lg-5">
+              <div class="row">
+                <div class="col-xl-4 col-md-5 text-center text-md-start pb-2 pb-md-0 mb-4 mb-md-0">
+                  <h2 class="pb-3 mb-1 mb-lg-2">Any questions? <br class="d-none d-md-inline">Check out the FAQs</h2>
+                  <p class="fs-lg pb-3 mb-2 mb-lg-3">Still have unanswered questions and need to get in touch?</p>
+                  <a href="contacts-v2.html" class="btn btn-primary">Contact support</a>
+                </div>
+                <div class="col-md-7 offset-xl-1">
+                  <div class="accordion" id="faq">
+                    <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                      <h2 class="accordion-header" id="q1-heading">
+                        <button class="accordion-button shadow-none rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">
+                          What is USSD and how is it different from SMS?
+                        </button>
+                      </h2>
+                      <div id="q1" class="accordion-collapse collapse show" aria-labelledby="q1-heading" data-bs-parent="#faq">
+                        <div class="accordion-body fs-sm pt-0">
+                          <p>USSD (Unstructured Supplementary Service Data) is an interactive mobile technology similar to SMS. However, unlike SMS, USSD transactions happen in real-time, without storing messages on the phone. This makes it ideal for quick interactions like checking bank balances or buying airtime.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                      <h2 class="accordion-header" id="q2-heading">
+                        <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">
+                          Why should I use your USSD platform?
+                        </button>
+                      </h2>
+                      <div id="q2" class="accordion-collapse collapse" aria-labelledby="q2-heading" data-bs-parent="#faq">
+                        <div class="accordion-body fs-sm pt-0">
+                          <p>Our platform offers numerous advantages:
+    
+                            Painless integration: Build menus in minutes without coding.
+                            Real-time analytics: Monitor application performance instantly.
+                            High capacity: Reach thousands of users simultaneously.
+                            Robust dashboards: Track all transactions with ease.
+                            Extensive support: Get help building and managing your USSD menus.
+                            Flexible pricing: Choose options that fit your needs.</p>
+                            </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                      <h2 class="accordion-header" id="q3-heading">
+                        <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">
+                          How much does it cost?
+                        </button>
+                      </h2>
+                      <div id="q3" class="accordion-collapse collapse" aria-labelledby="q3-heading" data-bs-parent="#faq">
+                        <div class="accordion-body fs-sm pt-0">
+                          <p>We offer both pre-paid and post-paid billing options. Visit our pricing session for detailed pricing information.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                      <h2 class="accordion-header" id="q4-heading">
+                        <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4" aria-expanded="false" aria-controls="q4">
+                          Do I need any technical knowledge to use your platform?
+                        </button>
+                      </h2>
+                      <div id="q4" class="accordion-collapse collapse" aria-labelledby="q4-heading" data-bs-parent="#faq">
+                        <div class="accordion-body fs-sm pt-0">
+                          <p>No! Our platform is designed for ease of use. Even with no coding experience, you can build beautiful and functional USSD menus.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                      <h2 class="accordion-header" id="q5-heading">
+                        <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5" aria-expanded="false" aria-controls="q5">
+                          How can I start using your platform??
+                        </button>
+                      </h2>
+                      <div id="q5" class="accordion-collapse collapse" aria-labelledby="q5-heading" data-bs-parent="#faq">
+                        <div class="accordion-body fs-sm pt-0">
+                          <p>Sign up and unleash the power of USSD for your business!</p>
+                         </div>
+                      </div>
+                    </div>
+                    </div>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </section>
+    
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+          </div>
+        </div>
+      </section>
+    
+        <!-- Footer -->
+    <footer class="footer dark-mode bg-dark border-top border-light pt-5 pb-4 pb-lg-5">
+      <div class="container pt-lg-4">
+        <div class="row pb-5">
+          <div class="col-lg-4 col-md-6">
+            
+          </div>
+        </div>
+        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+          &copy; All rights reserved. <b>DigitalMediaPlus Enterprises</b> 
+        </p>
+      </div>
+    </footer>
+            </div>
+            <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+              &copy; All rights reserved. <b>DigitalMediaPlus Enterprises</b> 
+            </p>
+          </div>
+        </footer>
+
+
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <!-- Vendor Scripts -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+</html>

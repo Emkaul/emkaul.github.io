@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DigitalMediaPlus USSD Panel | Contacts</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DigitalMediaPlus">
+    <meta name="keywords" content="DigitalMediaPlus">
+    <meta name="author" content="DigitalMediaPlus">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+
+  <!-- Body -->
+  <body>
+    
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+      <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/img/logo.svg" width="47" alt="USSD Panel">
+            USSD Panel
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                      </div>
+                    </div>
+                  </div>
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="pricing.html" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signin.html" class="nav-link">Sign In</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signup.html" class="nav-link">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a href="contacts-v2.html" class="nav-link">Contact Us</a>
+                </li>
+              </ul>
+            </div>   
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </header>
+
+
+      <!-- Links + Contact form -->
+      <section class="position-relative bg-secondary pt-5">
+        <div class="container position-relative zindex-2 pt-5">
+
+          <!-- Breadcrumb -->
+          <nav class="pt-lg-4 pb-3 mb-2 mb-sm-3" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+              <li class="breadcrumb-item">
+                <a href="index.html"><i class="bx bx-home-alt fs-lg me-1"></i>Home</a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+            </ol>
+          </nav>
+
+          <div class="row">
+
+            <!-- Contact links -->
+            <div class="col-xl-4 col-lg-5 pb-4 pb-sm-5 mb-2 mb-sm-0">
+              <div class="pe-lg-4 pe-xl-0">
+                <h1 class="pb-3 pb-md-4 mb-lg-5">Contact Us</h1>
+
+                <div class="d-flex align-items-start pb-3 mb-sm-1 mb-md-3">
+                  <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                    <i class="bx bx-envelope"></i>
+                  </div>
+                  <div class="ps-3 ps-sm-4">
+                    <h2 class="h4 pb-1 mb-2">Email us</h2>
+                    <p>admin@digitalmediaplus.info</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start pb-3 mb-sm-1 mb-md-3">
+                  <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                    <i class="bx bxl-skype"></i>
+                  </div>
+                  <div class="ps-3 ps-sm-4">
+                    <h2 class="h4 pb-1 mb-2">Skype</h2>
+                    <p class="mb-2">digitalmediaplus</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start  pb-3 mb-sm-1 mb-md-3">
+                  <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                    <i class="bx bx-phone-call"></i>
+                  </div>
+                  <div class="ps-3 ps-sm-4">
+                    <h2 class="h4 pb-1 mb-2">Call</h2>
+                    <p class="mb-2">+234 805 462 9268</p>
+                  </div>
+                </div>
+
+                <div class="d-flex align-items-start  pb-3 mb-sm-1 mb-md-3">
+                  <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                    <i class="bx bxl-whatsapp"></i>
+                  </div>
+                  <div class="ps-3 ps-sm-4">
+                    <h2 class="h4 pb-1 mb-2">WhatsApp</h2>
+                    <p class="mb-2"><a href="https://api.whatsapp.com/message/YQ74OO6V5FUCP1?autoload=1&app_absent=0">Click here</a></p>
+                  </div>
+                </div>
+                <div class="d-flex align-items-start">
+                  <div class="bg-light text-primary rounded-circle flex-shrink-0 fs-3 lh-1 p-3">
+                    <i class="bx bx-world"></i>
+                  </div>
+                  <div class="ps-3 ps-sm-4">
+                    <h2 class="h4 pb-1 mb-2">Kingschat</h2>
+                    <p class="mb-2">@dmplus</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact form -->
+            <div class="col-xl-6 col-lg-7 offset-xl-2">
+              <div class="card border-light shadow-lg py-3 p-sm-4 p-md-5">
+                <div class="bg-dark position-absolute top-0 start-0 w-100 h-100 rounded-3 d-none d-dark-mode-block"></div>
+                <div class="card-body position-relative zindex-2">
+                  <h2 class="card-title pb-3 mb-4">Send a message</h2>
+                  <form class="row g-4 needs-validation" novalidate>
+                    <div class="col-12">
+                      <label for="fn" class="form-label fs-base">Full name</label>
+                      <input type="text" class="form-control form-control-lg" id="fn" required>
+                      <div class="invalid-feedback">Please enter your full name!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="email" class="form-label fs-base">Email address</label>
+                      <input type="email" class="form-control form-control-lg" id="email" required>
+                      <div class="invalid-feedback">Please provide a valid email address!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="subject" class="form-label fs-base">Subject</label>
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                      <div class="invalid-feedback">Please enter a subject!</div>
+                    </div>
+                    <div class="col-12">
+                      <label for="message" class="form-label fs-base">Message</label>
+                      <textarea class="form-control" name="subject" rows="5" id="Message" placeholder="Message" required></textarea>
+                      <div class="invalid-feedback">Enter a message!</div>
+                    </div>
+                    <div class="col-12 pt-2 pt-sm-3">
+                      <button type="submit" class="btn btn-lg btn-primary w-100 w-sm-auto">Send message</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="position-absolute bottom-0 start-0 w-100 bg-light" style="height: 8rem;"></div>
+      </section>
+
+
+              <!-- Pagination (bullets) -->
+              <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+            </div>
+          </div>
+        </section>
+      
+
+
+  <!-- Footer -->
+  <footer class="footer dark-mode bg-dark border-top border-light pt-5 pb-4 pb-lg-5">
+    <div class="container pt-lg-4">
+      <div class="row pb-5">
+        <div class="col-lg-4 col-md-6">
+          
+        </div>
+      </div>
+      <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+        &copy; All rights reserved. <b>DigitalMediaPlus Enterprises</b> 
+      </p>
+    </div>
+  </footer>
+
+
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <!-- Vendor Scripts -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="assets/vendor/cleave.js/dist/cleave.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+</html>

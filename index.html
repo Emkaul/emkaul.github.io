@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>DigitalMediaPlus | USSD</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DigitalMediaPlus USSD">
+    <meta name="keywords" content="USSD">
+    <meta name="author" content="DigitalMediaPlus">
+
+    <!-- Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon and Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Vendor Styles -->
+    <link rel="stylesheet" media="screen" href="assets/vendor/boxicons/css/boxicons.min.css"/>
+    <link rel="stylesheet" media="screen" href="assets/vendor/swiper/swiper-bundle.min.css"/>
+    <link rel="stylesheet" media="screen" href="assets/vendor/lightgallery/css/lightgallery-bundle.min.css"/>
+
+    <!-- Main Theme Styles + Bootstrap -->
+    <link rel="stylesheet" media="screen" href="assets/css/theme.min.css">
+
+    <!-- Page loading styles -->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .dark-mode .page-loading {
+        background-color: #0b0f19;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #9397ad;
+      }
+      .dark-mode .page-loading-inner > span {
+        color: #fff;
+        opacity: .6;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #b4b7c9;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      .dark-mode .page-spinner {
+        border-color: rgba(255,255,255,.4);
+        border-right-color: transparent;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+
+    <!-- Theme mode -->
+    <script>
+      let mode = window.localStorage.getItem('mode'),
+          root = document.getElementsByTagName('html')[0];
+      if (mode !== null && mode === 'dark') {
+        root.classList.add('dark-mode');
+      } else {
+        root.classList.remove('dark-mode');
+      }
+    </script>
+
+    <!-- Page loading scripts -->
+    <script>
+      (function () {
+        window.onload = function () {
+          const preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 1000);
+        };
+      })();
+    </script>
+  </head>
+
+
+  <!-- Body -->
+  <body>
+    
+    <!-- Page loading spinner -->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+
+
+    <!-- Page wrapper for sticky footer -->
+    <!-- Wraps everything except footer to push footer to the bottom of the page if there is little content -->
+    <main class="page-wrapper">
+
+
+      <!-- Navbar -->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page -->
+      <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <img src="assets/img/logo.svg" width="47" alt="USSD Panel">
+            USSD Panel
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                      </div>
+                    </div>
+                  </div>
+                <li class="nav-item">
+                  <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a href="pricing.html" class="nav-link">Pricing</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signin.html" class="nav-link">Sign In</a>
+                </li>
+                <li class="nav-item">
+                  <a href="account-signup.html" class="nav-link">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a href="contacts-v2.html" class="nav-link">Contact Us</a>
+                </li>
+              </ul>
+            </div>   
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </header>
+
+
+      <!-- Hero -->
+      <section class="position-relative pt-md-3 pt-lg-5 mb-md-3 mb-lg-5">
+        <div class="container position-relative zindex-5 pt-5">
+          <div class="row mt-4 pt-5">
+            <div class="col-xl-4 col-lg-5 text-center text-lg-start pb-3 pb-md-4 pb-lg-0">
+              <h1 class="fs-xl text-uppercase">Welcome to the best ussd service in Nigeria</h1>
+              <h3 class="display-4 pb-md-2 pb-lg-4">DigitalMediaPlus USSD Platform</h3>
+              <p class="fs-lg">Don't have USSD for your business? <a href="account-signup.html" class="fw-medium">Click here to get started.</a></p>
+            </div>
+            <div class="col-xl-5 col-lg-6 offset-xl-1 position-relative zindex-5 mb-5 mb-lg-0">
+              <div class="rellax card bg-primary border-0 shadow-primary py-2 p-sm-4 p-lg-5" data-rellax-speed="-1" data-disable-parallax-down="lg">
+                <div class="card-body p-lg-3">
+                  <h2 class="text-light pb-1 pb-md-3">What is USSD?</h2>
+                  <p class="fs-lg text-light pb-2 pb-md-0 mb-4 mb-md-5">USSD (Unstructured Supplementary Service Data) sometimes referred to as "Quick Codes" or "Feature codes" is a Global System for Mobile(GSM) communication technology that is used to send text between a mobile phone and an application program in the network. Applications may include prepaid roaming or mobile chatting.</p>
+                
+                    <i class="bx bx-right-arrow-alt lh-1 fs-4 ms-2 me-n2"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-none d-lg-block" style="margin-top: -165px;"></div>
+          <div class="row align-items-end">
+            <div class="col-lg-6 d-none d-lg-block">
+              <img src="assets/img/landing/medical/hero-img-2.jpg" class="rellax rounded-3" alt="Image" data-rellax-speed="1.35" data-disable-parallax-down="md">
+            </div>
+            <div class="col-lg-6 d-flex flex-column flex-md-row align-items-center justify-content-between">
+              <div class="d-flex align-items-center ps-xl-5 mb-4 mb-md-0">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="d-none d-lg-block position-absolute top-0 end-0 w-50 d-flex flex-column ps-3" style="height: calc(100% - 108px);">
+          <div class="w-100 h-100 overflow-hidden bg-position-center bg-repeat-0 bg-size-cover" style="background-image: url(assets/img/landing/medical/hero-img-1.jpg); border-bottom-left-radius: .5rem;"></div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section class="container pb-5 mb-md-2 mb-lg-5">
+        <div class="row">
+          <div class="col-lg-4 text-center text-lg-start pb-3 pb-lg-0 mb-4 mb-lg-0">
+            <h2 class="h1 mb-lg-4">Highly Innovative USSD Service</h2>
+            <p class="pb-4 mb-0 mb-lg-3">USSD is similar to Short Messaging Service (SMS), but,unlike SMS, USSD transactions occur during the session only. With SMS, message scan be sent to a mobile phone and stored for several days if the phone is not activated or within range.</p>
+          </div>
+          <div class="col-xl-7 col-lg-8 offset-xl-1">
+            <div class="row row-cols-1 row-cols-md-2">
+              <div class="col">
+                <h2>Features</h2>
+                <p>Features of our system include:</p>
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">Painless Integration</h3>
+                      <p class="pb-2 mb-1">We have made it easy for any web developer to generate and serve USSD Menus within minutes.
+                        Our shared USSD codes are provisioned immediately,instantly, automatically.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">Real-time Analytics</h3>
+                      <p class="pb-2 mb-1">We have built robust analytics into our USSD platform to help you monitor the uptake of your USSD applications in real time.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">High Capacity</h3>
+                      <p class="pb-2 mb-1">Our USSD gateway is build to handle thousands of concurrent requests at any one time using the latest in asynchronous web technologies.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">Robust Dashboards</h3>
+                      <p class="pb-2 mb-1">We provide web-based dashboards with logs of all your transactions. All logs are indexed for quick retrieval, which should help you build, support and monitor your applications.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">Extensive Support</h3>
+                      <p class="pb-2 mb-1">Our extensive customer support is always available to help you build and support your USSD applications. We also manage all the telco relationships so that you do not have to.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card-hover bg-secondary border-0 mb-4">
+                  <div class="card-body d-flex align-items-start">
+                    <div class="ps-4">
+                      <h3 class="h5 pb-2 mb-1">Flexible Pricing</h3>
+                      <p class="pb-2 mb-1">Choose between pre-paid and post-paid billing options, depending on your business needs using our shared USSD platform..</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Pagination (bullets) -->
+        <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+      </div>
+    </div>
+  </section>
+
+
+      <!-- CTA carousel -->
+      <section class="pb-5 mb-2 mb-md-4 mb-lg-5" style="padding-top: 80px;">
+        <div class="bg-secondary pb-lg-4 pb-xl-5">
+          <div class="container pb-4 pb-md-5">
+            <div class="row">
+              <div class="col-xl-5 col-lg-6" style="margin-top: -80px;">
+
+                <!-- Swiper tabs -->
+                <div class="swiper-tabs mx-auto" style="max-width: 526px;">
+                  <div id="image-1" class="swiper-tab active">
+                    <img src="assets/img/landing/medical/cta/01.jpg" class="rounded-3" alt="Image">
+                  </div>
+                  <div id="image-2" class="swiper-tab">
+                    <img src="assets/img/landing/medical/cta/02.jpg" class="rounded-3" alt="Image">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-5 col-lg-6 offset-xl-1 pt-2 pt-md-4 pt-lg-5 mt-4">
+
+                <!-- Slider prev/next buttons -->
+                <div class="d-flex justify-content-center justify-content-lg-start pb-3 mb-3">
+                  <button type="button" id="prev" class="btn btn-prev btn-icon btn-sm me-2">
+                    <i class="bx bx-chevron-left"></i>
+                  </button>
+                  <button type="button" id="next" class="btn btn-next btn-icon btn-sm ms-2">
+                    <i class="bx bx-chevron-right"></i>
+                  </button>
+                </div>
+
+                <!-- Swiper slider -->
+                <div class="swiper mx-0 mb-md-n2 mb-xxl-n3" data-swiper-options='{
+                  "spaceBetween": 30,
+                  "loop": true,
+                  "tabs": true,
+                  "navigation": {
+                    "prevEl": "#prev",
+                    "nextEl": "#next"
+                  }
+                }'>
+                  <div class="swiper-wrapper text-center text-lg-start">
+
+                    <!-- Item -->
+                    <div class="swiper-slide pb-4" data-swiper-tab="#image-1">
+                      <h2 class="h1 mb-4">Reach Thousands,<span class="text-success"> Instantly.</span> The Power of High-Capacity USSD.</h2>
+                      <p class="pb-2 pb-xl-0 mb-4 mb-xl-5">Imagine reaching thousands of users, instantly, right on their phones. Our high-capacity USSD gateway makes it possible. Built for peak performance, it handles mountains of concurrent requests with ease. Say goodbye to delays and hello to smooth, immediate connections. Unleash the full potential of USSD with our platform!</p>
+                      <a href="account-signup.html" class="btn btn-success btn-lg shadow-success">Get started</a>
+                    </div>
+
+                    <!-- Item -->
+                    <div class="swiper-slide pb-4" data-swiper-tab="#image-2">
+                      <h2 class="h1 mb-4">USSD Menus Made <span class="text-danger">Easy</span></h2>
+                      <p class="pb-2 pb-xl-0 mb-4 mb-xl-5">Struggling with clunky SMS for your app? Go modern with seamless USSD menus! Our platform lets you build & launch menus in minutes - no coding needed. Real-time analytics, robust dashboards, and 24/7 support? Yep, we've got that too. Tap in and level up your user experience!</p>
+                      <a href="account-signup.html" class="btn btn-danger btn-lg shadow-danger">Get started</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+       <!-- Hero -->
+       <section class="bg-dark dark-mode py-4">
+        <div class="container pb-2 py-lg-3">
+
+          <!-- Breadcrumb -->
+          <nav class="pb-4 mb-lg-3" aria-label="breadcrumb">
+
+          </nav>
+          <h1 class="text-center mb-0">Transparent Pricing for You</h1>
+        </div>
+        <div style="height: 300px;"></div>
+      </section>
+
+
+      <!-- Pricing plans -->
+      <section class="container position-relative zindex-2" style="margin-top: -300px;">
+        <div class="price-switch-wrapper">
+          <div class="dark-mode pb-2 pb-lg-3">
+          </div>
+          <div class="table-responsive-lg">
+            <div class="d-flex align-items-center pb-4">
+  
+              <!-- Pricing plan -->
+              <div class="border rounded-3 rounded-end-0 shadow-sm me-n1" style="width: 32%; min-width: 16rem;">
+                <div class="card bg-light h-100 border-0 border-end rounded-end-0 py-3 py-sm-4 py-lg-5">
+                  <div class="card-body text-center">
+                    <h3 class="mb-2">Monthly Maintenance</h3>
+                    <div class="fs-lg pb-4 mb-3">All Networks</div>
+                    <div class="display-5 text-dark mb-1" data-monthly-price>₦25,000</div>
+                  </div>
+                  <div class="card-footer border-0 text-center pt-0 pb-4">
+                    <a href="pricing.html" class="btn btn-outline-primary btn-lg">Learn more</a>
+                  </div>
+                </div>
+              </div>
+          
+              <!-- Featurd pricing plan -->
+              <div class="bg-primary position-relative rounded-3 shadow-primary shadow-dark-mode-none zindex-2 p-4" style="width: 36%; min-width: 18rem;">
+                <div class="card bg-transparent border-light py-3 py-sm-4 py-lg-5">
+                  <div class="card-body text-light text-center">
+                    <h3 class="text-light mb-2">Set Up Cost</h3>
+                    <div class="fs-lg opacity-70 pb-4 mb-3">For everyone</div>
+                    <div class="display-5 mb-1" data-monthly-price>FREE</div>
+                  </div>
+                  <div class="card-footer border-0 text-center pt-0 pb-4">
+                    <a href="account-signup.html" class="btn btn-light btn-lg shadow-secondary">Get started now</a>
+                  </div>
+                </div>
+              </div>
+
+  
+                <!-- Pricing plan -->
+                <div class="border rounded-3 rounded-end-0 shadow-sm me-n1" style="width: 32%; min-width: 16rem;">
+                  <div class="card bg-light h-100 border-0 border-end rounded-end-0 py-3 py-sm-4 py-lg-5">
+                    <div class="card-body text-center">
+                      <h3 class="mb-2">Monthly Maintenance</h3>
+                      <div class="fs-lg pb-4 mb-3">All Networks</div>
+                      <div class="display-5 text-dark mb-1" data-monthly-price>₦25,000</div>
+                    </div>
+                    <div class="card-footer border-0 text-center pt-0 pb-4">
+                      <a href="pricing.html" class="btn btn-outline-primary btn-lg">Learn more</a>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials (Carousel) -->
+      <section class="bg-secondary py-5 mb-2 mb-md-4 mb-lg-5">
+        <div class="container pt-lg-4 mt-1">
+          <h2 class="h1 text-center pb-3 pb-md-4 pb-xl-5">What Our Users Say</h2>
+        </div>
+        <div class="pb-lg-3 px-2 px-sm-0">
+          <div class="swiper" data-swiper-options='{
+            "slidesPerView": 1,
+            "centeredSlides": true,
+            "spaceBetween": 8,
+            "loop": true,
+            "pagination": {
+              "el": ".swiper-pagination",
+              "clickable": true
+            },
+            "breakpoints": {
+              "500": {
+                "slidesPerView": 2,
+                "spaceBetween": 24
+              },
+              "1000": {
+                "slidesPerView": 4,
+                "spaceBetween": 24
+              },
+              "1500": {
+                "slidesPerView": 6,
+                "spaceBetween": 24
+              }
+            }
+          }'>
+            <div class="swiper-wrapper">
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto pt-4">
+                <figure class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+                  <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+                    <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                      <i class="bx bxs-quote-left"></i>
+                    </span>
+                    <blockquote class="card-body pb-3 mb-0">
+                      <p class="mb-0">Pepperlicious used to sweat over slow, clunky SMS orders. Your USSD platform? Pure jollof rice! Building menus is a breeze, and real-time stats let us spice up promos faster than you can say 'suya.' Orders sizzle now, like akara fresh off the pan!</p>
+                    </blockquote>
+                    <div class="card-footer border-0 text-nowrap pt-0">
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bx-star text-muted opacity-75"></i>
+                    </div>
+                  </div>
+                  <figcaption class="d-flex align-items-center ps-4 pt-4">
+                    <img src="assets/img/avatar/30.jpg" width="48" class="rounded" alt="Fannie Summers">
+                    <div class="ps-3">
+                      <h6 class="fs-sm fw-semibold mb-0">Omobola Johnson</h6>
+                      <span class="fs-xs text-muted">Pepperlicious Delivery</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto pt-4">
+                <figure class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+                  <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+                    <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                      <i class="bx bxs-quote-left"></i>
+                    </span>
+                    <blockquote class="card-body pb-3 mb-0">
+                      <p class="mb-0">Launching WazobiaPay with your USSD gateway was smoother than fufu with egusi. Your high capacity handled our user flood like Burna Boy at a stadium, no gbege. Robust dashboards keep us in control, and your support? Na MVP! Millions dey bank with WazobiaPay now, thanks to you!</p>
+                    </blockquote>
+                    <div class="card-footer border-0 text-nowrap pt-0">
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                    </div>
+                  </div>
+                  <figcaption class="d-flex align-items-center ps-4 pt-4">
+                    <img src="assets/img/avatar/32.jpg" width="48" class="rounded" alt="Robert Fox">
+                    <div class="ps-3">
+                      <h6 class="fs-sm fw-semibold mb-0">Chike Ogbonna</h6>
+                      <span class="fs-xs text-muted">WazobiaPay</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto pt-4">
+                <figure class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+                  <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+                    <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                      <i class="bx bxs-quote-left"></i>
+                    </span>
+                    <blockquote class="card-body pb-3 mb-0">
+                      <p class="mb-0">Building SMS menus used to be more wahala than Lagos traffic. Your platform? Omo, na suya on a stick! Pre-built templates and drag-and-drop? Easier than Agege bread. Clients love my fire USSD menus, and I finish projects before you can say 'chop money'! Thanks for the sauce!</p>
+                    </blockquote>
+                    <div class="card-footer border-0 text-nowrap pt-0">
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bx-star text-muted opacity-75"></i>
+                    </div>
+                  </div>
+                  <figcaption class="d-flex align-items-center ps-4 pt-4">
+                    <img src="assets/img/avatar/31.jpg" width="48" class="rounded" alt="Annette Black">
+                    <div class="ps-3">
+                      <h6 class="fs-sm fw-semibold mb-0">Ifeoma Okafor</h6>
+                      <span class="fs-xs text-muted">Freelance Web Weaver</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto pt-4">
+                <figure class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+                  <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+                    <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                      <i class="bx bxs-quote-left"></i>
+                    </span>
+                    <blockquote class="card-body pb-3 mb-0">
+                      <p class="mb-0">Your USSD support made onboarding new clients like Agege bread and eba! You handled all the telco gbas gbos, so we focused on training. Now, Megafone users dey groove with smooth USSD. Na better thing!</p>
+                    </blockquote>
+                    <div class="card-footer border-0 text-nowrap pt-0">
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bx-star text-muted opacity-75"></i>
+                      <i class="bx bx-star text-muted opacity-75"></i>
+                    </div>
+                  </div>
+                  <figcaption class="d-flex align-items-center ps-4 pt-4">
+                    <img src="assets/img/avatar/34.jpg" width="48" class="rounded" alt="Jerome Bell">
+                    <div class="ps-3">
+                      <h6 class="fs-sm fw-semibold mb-0">Emeka Obi</h6>
+                      <span class="fs-xs text-muted">Megafone Network</span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+
+              <!-- Item -->
+              <div class="swiper-slide h-auto pt-4">
+                <figure class="d-flex flex-column h-100 px-2 px-sm-0 mb-0">
+                  <div class="card h-100 position-relative border-0 shadow-sm pt-4">
+                    <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                      <i class="bx bxs-quote-left"></i>
+                    </span>
+                    <blockquote class="card-body pb-3 mb-0">
+                      <p class="mb-0">My customers dey buy my akara straight from the USSD menu! No more missed calls or busy lines. Quick, easy, queue dey move like Asake on stage. Your pricing no break bank, and analytics show me which akara dey sell like Agege bread. Business dey boom like afrobeats!</p>
+                    </blockquote>
+                    <div class="card-footer border-0 text-nowrap pt-0">
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bxs-star text-warning"></i>
+                      <i class="bx bx-star text-muted opacity-75"></i>
+                    </div>
+                  </div>
+                  <figcaption class="d-flex align-items-center ps-4 pt-4">
+                    <img src="assets/img/avatar/35.jpg" width="48" class="rounded" alt="Albert Flores">
+                    <div class="ps-3">
+                      <h6 class="fs-sm fw-semibold mb-0">Nneka Onwuzurike</h6>
+                      <span class="fs-xs text-muted">Mama Nneka's Akara Haven/span>
+                    </div>
+                  </figcaption>
+                </figure>
+              </div>
+
+             
+
+            <!-- Pagination (bullets) -->
+            <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+          </div>
+   
+
+      
+      <!-- FAQ -->
+      <section class="bg-secondary py-5">
+        <div class="container my-2 py-md-2 py-lg-5">
+          <div class="row">
+            <div class="col-xl-4 col-md-5 text-center text-md-start pb-2 pb-md-0 mb-4 mb-md-0">
+              <h2 class="pb-3 mb-1 mb-lg-2">Any questions? <br class="d-none d-md-inline">Check out the FAQs</h2>
+              <p class="fs-lg pb-3 mb-2 mb-lg-3">Still have unanswered questions and need to get in touch?</p>
+              <a href="contacts-v2.html" class="btn btn-primary">Contact support</a>
+            </div>
+            <div class="col-md-7 offset-xl-1">
+              <div class="accordion" id="faq">
+                <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                  <h2 class="accordion-header" id="q1-heading">
+                    <button class="accordion-button shadow-none rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#q1" aria-expanded="true" aria-controls="q1">
+                      What is USSD and how is it different from SMS?
+                    </button>
+                  </h2>
+                  <div id="q1" class="accordion-collapse collapse show" aria-labelledby="q1-heading" data-bs-parent="#faq">
+                    <div class="accordion-body fs-sm pt-0">
+                      <p>USSD (Unstructured Supplementary Service Data) is an interactive mobile technology similar to SMS. However, unlike SMS, USSD transactions happen in real-time, without storing messages on the phone. This makes it ideal for quick interactions like checking bank balances or buying airtime.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                  <h2 class="accordion-header" id="q2-heading">
+                    <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2" aria-expanded="false" aria-controls="q2">
+                      Why should I use your USSD platform?
+                    </button>
+                  </h2>
+                  <div id="q2" class="accordion-collapse collapse" aria-labelledby="q2-heading" data-bs-parent="#faq">
+                    <div class="accordion-body fs-sm pt-0">
+                      <p>Our platform offers numerous advantages:
+
+                        Painless integration: Build menus in minutes without coding.
+                        Real-time analytics: Monitor application performance instantly.
+                        High capacity: Reach thousands of users simultaneously.
+                        Robust dashboards: Track all transactions with ease.
+                        Extensive support: Get help building and managing your USSD menus.
+                        Flexible pricing: Choose options that fit your needs.</p>
+                        </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                  <h2 class="accordion-header" id="q3-heading">
+                    <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q3" aria-expanded="false" aria-controls="q3">
+                      How much does it cost?
+                    </button>
+                  </h2>
+                  <div id="q3" class="accordion-collapse collapse" aria-labelledby="q3-heading" data-bs-parent="#faq">
+                    <div class="accordion-body fs-sm pt-0">
+                      <p>We offer both pre-paid and post-paid billing options. Visit our pricing session for detailed pricing information.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                  <h2 class="accordion-header" id="q4-heading">
+                    <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q4" aria-expanded="false" aria-controls="q4">
+                      Do I need any technical knowledge to use your platform?
+                    </button>
+                  </h2>
+                  <div id="q4" class="accordion-collapse collapse" aria-labelledby="q4-heading" data-bs-parent="#faq">
+                    <div class="accordion-body fs-sm pt-0">
+                      <p>No! Our platform is designed for ease of use. Even with no coding experience, you can build beautiful and functional USSD menus.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item border-0 rounded-3 shadow-sm mb-3">
+                  <h2 class="accordion-header" id="q5-heading">
+                    <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q5" aria-expanded="false" aria-controls="q5">
+                      How can I start using your platform??
+                    </button>
+                  </h2>
+                  <div id="q5" class="accordion-collapse collapse" aria-labelledby="q5-heading" data-bs-parent="#faq">
+                    <div class="accordion-body fs-sm pt-0">
+                      <p>Sign up and unleash the power of USSD for your business!</p>
+                     </div>
+                  </div>
+                </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <!-- Pagination (bullets) -->
+        <div class="swiper-pagination position-relative pt-1 pt-sm-3 mt-5"></div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Footer -->
+    <footer class="footer dark-mode bg-dark border-top border-light pt-5 pb-4 pb-lg-5">
+      <div class="container pt-lg-4">
+        <div class="row pb-5">
+          <div class="col-lg-4 col-md-6">
+            
+          </div>
+        </div>
+        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+          &copy; All rights reserved. <b>DigitalMediaPlus Enterprises</b> 
+        </p>
+      </div>
+    </footer>
+
+
+    <!-- Back to top button -->
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <!-- Vendor Scripts -->
+    <script src="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="assets/vendor/rellax/rellax.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/lightgallery/lightgallery.min.js"></script>
+    <script src="assets/vendor/lightgallery/plugins/fullscreen/lg-fullscreen.min.js"></script>
+    <script src="assets/vendor/lightgallery/plugins/zoom/lg-zoom.min.js"></script>
+    <script src="assets/vendor/lightgallery/plugins/video/lg-video.min.js"></script>
+
+    <!-- Main Theme Script -->
+    <script src="assets/js/theme.min.js"></script>
+  </body>
+</html>
